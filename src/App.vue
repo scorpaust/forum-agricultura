@@ -1,18 +1,10 @@
 <template>
-	<v-container id="app">
-		<home-page />
-		<router-view></router-view>
-	</v-container>
+	<router-view></router-view>
 </template>
 
 <script>
-	import HomePage from "@/components/HomePage.vue";
-
 	export default {
-		name: "App",
-		components: {
-			HomePage
-		}
+		name: "App"
 	};
 </script>
 <style>
