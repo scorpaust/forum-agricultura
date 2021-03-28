@@ -1,5 +1,7 @@
 import  {createRouter, createWebHistory} from 'vue-router'
 
+import AppCategory from '../components/AppCategory.vue'
+import Forum from '../views/Forum.vue'
 import HomePage from '../views/Home.vue'
 import PageNotFound from '../views/NotFound.vue'
 import PageShowThread from '../views/ShowThread.vue'
@@ -7,6 +9,8 @@ import sourceData from '@/data.json'
 
 const routes = [
   { path: '/', name: 'Home', component: HomePage },
+  { path: '/category/:id', name: 'Category', component: AppCategory },
+  { path: '/forum/:id', name: 'Forum', component: Forum, props: true},
   { path: '/thread/:id', name: 'Thread', component: PageShowThread, props: true, beforeEnter(to, from, next) {
     const threadExists = sourceData.threads.find(thread => thread.id === to.params.id);
     if (threadExists) {

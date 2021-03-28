@@ -2,14 +2,12 @@
 	<div class="post-list">
 		<div class="post" v-for="post in posts" :key="post.id">
 			<div class="user-info">
-				<a href="#" class="user-name">{{
-					userById(postById(post.userId)).name
-				}}</a>
+				<a href="#" class="user-name">{{ userById(post.userId).name }}</a>
 
 				<a href="#">
 					<img
 						class="avatar-large"
-						:src="userById(postById(post.userId)).avatar"
+						:src="userById(post.userId).avatar"
 						alt=""
 					/>
 				</a>
@@ -20,13 +18,13 @@
 			<div class="post-content">
 				<div>
 					<p>
-						{{ postById(postId).text }}
+						{{ post.text }}
 					</p>
 				</div>
 			</div>
 
 			<div class="post-date text-faded">
-				{{ postById(postId).publishedAt }}
+				<app-date :timestamp="post.publishedAt" />
 			</div>
 		</div>
 	</div>

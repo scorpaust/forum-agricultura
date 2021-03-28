@@ -1,25 +1,21 @@
 <template>
 	<div v-if="thread" class="col-large push-top">
 		<h1>{{ thread.title }}</h1>
-
 		<post-list :posts="threadPosts" />
-	</div>
-	<div else class="col-full text-center">
-		<h1>Tópico Não Encontrado</h1>
-		<router-link :to="{ name: 'Home' }"
-			>Ver alguns tópicos interessantes...</router-link
-		>
+		<post-editor @save="addPost" />
 	</div>
 </template>
 
 <script>
 	import sourceData from "../data.json";
 	import PostList from "../components/PostList.vue";
+	import PostEditor from "../components/PostEditor.vue";
 
 	export default {
 		name: "ShowThread",
 		components: {
-			PostList
+			PostList,
+			PostEditor
 		},
 		props: {
 			id: {
@@ -29,7 +25,8 @@
 		},
 		data() {
 			return {
-				threads: sourceData.threads
+				threads: sourceData.threads,
+				posts: sourceData.posts
 			};
 		},
 		computed: {
@@ -38,6 +35,17 @@
 			},
 			threadPosts() {
 				return this.posts.filter(post => post.threadId === this.id);
+			}
+		},
+		methods: {
+			addPost(eventData) {
+				const post = {
+					...eventData.post,
+					threadId: this.id
+				};
+				this.posts.push(post);
+				this.thread.posts.push(post.id);
+				console.log(post);
 			}
 		}
 	};
