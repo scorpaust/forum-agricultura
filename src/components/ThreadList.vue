@@ -36,8 +36,6 @@
 </template>
 
 <script>
-	import sourceData from "@/data.json";
-
 	export default {
 		props: {
 			threads: {
@@ -45,18 +43,20 @@
 				required: true
 			}
 		},
-		data() {
-			return {
-				posts: sourceData.posts,
-				users: sourceData.users
-			};
-		},
 		methods: {
 			postById(postId) {
 				return this.posts.find(p => p.id === postId);
 			},
 			userById(userId) {
 				return this.users.find(p => p.id === userId);
+			}
+		},
+		computed: {
+			posts() {
+				return this.$store.state.posts;
+			},
+			users() {
+				return this.$store.state.users;
 			}
 		}
 	};

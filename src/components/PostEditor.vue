@@ -26,10 +26,8 @@
 		},
 		methods: {
 			save() {
-				const postId = "gggg" + Math.random();
 				const date = Math.floor(Date.now() / 1000);
 				const post = {
-					id: postId,
 					text: this.text,
 					publishedAt: date,
 					userId: "rpbB8C6ifrYmNDufMERWfQUoa202"

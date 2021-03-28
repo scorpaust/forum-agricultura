@@ -16,7 +16,8 @@
     "vue-cli-plugin-vuetify": "~2.3.1",
     "vue-i18n": "^8.24.2",
     "vue-router": "^4.0.5",
-    "vuetify": "^3.0.0-alpha.0"
+    "vuetify": "^3.0.0-alpha.0",
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
